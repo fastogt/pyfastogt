@@ -15,7 +15,7 @@ from setuptools.command.install import install
 # Package meta-data.
 NAME = 'pyfastogt'
 DESCRIPTION = 'FastoGT python files.'
-URL = 'https://github.com/fastogt/pybuild_utils'
+URL = 'https://github.com/fastogt/pyfastogt'
 EMAIL = 'support@fastogt.com'
 AUTHOR = 'Alexandr Topilski'
 REQUIRES_PYTHON = '>=3.0.0'

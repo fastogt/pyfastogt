@@ -88,8 +88,12 @@ def build_command_configure(compiler_flags: list, prefix_path, executable='./con
         subprocess.call(['ldconfig'])
 
 
-def generate_fastogt_git_path(repo_name) -> str:
+def generate_fastogt_github_path(repo_name) -> str:
     return 'https://github.com/fastogt/%s' % repo_name
+
+
+def generate_fastogt_gitlab_path(repo_name) -> str:
+    return 'https://gitlab.com/fastogt/%s' % repo_name
 
 
 class BuildRequest(object):
@@ -161,21 +165,21 @@ class BuildRequest(object):
         return self.prefix_path_
 
     def build_snappy(self):
-        self._clone_and_build_via_cmake(generate_fastogt_git_path('snappy'),
+        self._clone_and_build_via_cmake(generate_fastogt_github_path('snappy'),
                                         ['-DBUILD_SHARED_LIBS=OFF', '-DSNAPPY_BUILD_TESTS=OFF'])
 
     def build_jsonc(self):
-        self._clone_and_build_via_cmake(generate_fastogt_git_path('json-c'), ['-DBUILD_SHARED_LIBS=OFF'])
+        self._clone_and_build_via_cmake(generate_fastogt_github_path('json-c'), ['-DBUILD_SHARED_LIBS=OFF'])
 
     def build_libev(self):
         libev_compiler_flags = ['--with-pic', '--disable-shared', '--enable-static']
-        self._clone_and_build_via_autogen(generate_fastogt_git_path('libev'), libev_compiler_flags)
+        self._clone_and_build_via_autogen(generate_fastogt_github_path('libev'), libev_compiler_flags)
 
     def build_cpuid(self):
         cpuid_compiler_flags = ['--disable-shared', '--enable-static']
 
         pwd = os.getcwd()
-        cloned_dir = utils.git_clone(generate_fastogt_git_path('libcpuid'))
+        cloned_dir = utils.git_clone(generate_fastogt_github_path('libcpuid'))
         os.chdir(cloned_dir)
 
         platform_name = self.platform_name()
@@ -193,22 +197,22 @@ class BuildRequest(object):
         os.chdir(pwd)
 
     def update_pyfastogt(self):
-        self._clone_and_build_via_python3(generate_fastogt_git_path('pyfastogt'))
+        self._clone_and_build_via_python3(generate_fastogt_github_path('pyfastogt'))
 
     def build_common(self, with_qt=False):
         cmake_flags = []
         if with_qt:
             cmake_flags.append('-DQT_ENABLED=ON')
 
-        self._clone_and_build_via_cmake(generate_fastogt_git_path('common'), cmake_flags)
+        self._clone_and_build_via_cmake(generate_fastogt_github_path('common'), cmake_flags)
 
     def build_fastotv_protocol(self):
         cmake_flags = []
-        self._clone_and_build_via_cmake(generate_fastogt_git_path('fastotv_protocol'), cmake_flags)
+        self._clone_and_build_via_cmake(generate_fastogt_github_path('fastotv_protocol'), cmake_flags)
 
     def build_fastoplayer(self):
         cmake_flags = []
-        self._clone_and_build_via_cmake(generate_fastogt_git_path('fastoplayer'), cmake_flags)
+        self._clone_and_build_via_cmake(generate_fastogt_github_path('fastoplayer'), cmake_flags)
 
     def build_cmake(self, version):
         compiler_flags = []
