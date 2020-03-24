@@ -7,7 +7,7 @@ from datetime import datetime
 PROJECT_NAME = 'request_license'
 
 LICENSE_SERVER_URL = 'https://license.fastogt.com/v1/license'
-EXP_DAYS = 5
+EXP_DAYS = 30
 
 
 def print_usage():
