@@ -1,7 +1,8 @@
 import os
-import stat
 import shutil
+import stat
 import subprocess
+
 from pyfastogt import system_info, utils
 
 

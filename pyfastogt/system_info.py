@@ -1,8 +1,9 @@
-import platform
-import distro
-import subprocess
 import os
+import platform
+import subprocess
 from abc import ABCMeta, abstractmethod
+
+import distro
 
 
 class Architecture(object):

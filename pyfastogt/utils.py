@@ -1,15 +1,16 @@
+import contextlib
 import errno
+import json
 import os
 import re
 import shutil
+import ssl
 import subprocess
 import tarfile
-import json
-import ssl
-import certifi
-import contextlib
-from validate_email import validate_email
 from urllib.request import urlopen
+
+import certifi
+from validate_email import validate_email
 
 
 class CommonError(Exception):
