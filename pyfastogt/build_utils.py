@@ -246,6 +246,38 @@ class BuildRequest(object):
                                 get_supported_build_system_by_name('single_make'))
         os.chdir(pwd)
 
+    def build_ffmpeg(self, ffmpeg_specific_compile_flags=None):
+        if ffmpeg_specific_compile_flags is None:
+            ffmpeg_specific_compile_flags = []
+
+        ffmpeg_platform_args = ['--enable-static', '--enable-pic', '--disable-doc',
+                                '--disable-avdevice', '--disable-postproc', '--disable-swscale',
+                                '--disable-programs', '--disable-ffplay', '--disable-ffmpeg',
+                                '--disable-encoder=flac', '--disable-protocols', '--disable-devices',
+                                '--disable-network', '--disable-dxva2', '--disable-vdpau',
+                                '--disable-filters', '--enable-filter=yadif', '--disable-doc', '--disable-d3d11va',
+                                '--disable-audiotoolbox', '--disable-videotoolbox', '--disable-vaapi',
+                                '--disable-crystalhd', '--disable-mediacodec', '--disable-nvenc', '--disable-mmal',
+                                '--disable-cuda', '--disable-cuvid', '--disable-libmfx', '--disable-libnpp',
+                                '--disable-iconv', '--disable-jni', '--disable-v4l2_m2m',
+                                '--enable-optimizations']
+        platform = self.platform()
+        platform_name = platform.name()
+        if platform_name == 'linux':
+            ffmpeg_platform_args.extend(['--disable-libxcb'])
+        elif platform_name == 'windows':
+            ffmpeg_platform_args = ffmpeg_platform_args
+        elif platform_name == 'macosx':
+            ffmpeg_platform_args.extend(['--cc=clang', '--cxx=clang++', '--disable-libxcb'])
+        elif platform_name == 'android':
+            ffmpeg_platform_args = ffmpeg_platform_args
+            ffmpeg_platform_args.extend(['--cc=%s' % os.environ['CC']])
+
+        compiler_flags = ffmpeg_specific_compile_flags
+        compiler_flags.extend(ffmpeg_platform_args)
+        self._clone_and_build_via_configure(generate_fastogt_github_path('ffmpeg'), compiler_flags,
+                                            use_platform_flags=False)
+
     # install packages
     def _install_package(self, name: str):
         self.platform_.install_package(name)
