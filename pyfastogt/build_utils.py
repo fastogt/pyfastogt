@@ -250,11 +250,10 @@ class BuildRequest(object):
         if ffmpeg_specific_compile_flags is None:
             ffmpeg_specific_compile_flags = []
 
-        ffmpeg_platform_args = ['--enable-static', '--enable-pic', '--disable-doc',
+        ffmpeg_platform_args = ['--enable-static', '--enable-pic', '--disable-doc', '--enable-openssl',
                                 '--disable-avdevice', '--disable-postproc', '--disable-swscale',
                                 '--disable-ffplay', '--disable-ffmpeg',
-                                '--disable-encoder=flac', '--disable-protocols', '--disable-devices',
-                                '--disable-network', '--disable-dxva2', '--disable-vdpau',
+                                '--disable-encoder=flac', '--disable-devices', '--disable-dxva2', '--disable-vdpau',
                                 '--disable-filters', '--enable-filter=yadif', '--disable-doc', '--disable-d3d11va',
                                 '--disable-audiotoolbox', '--disable-videotoolbox', '--disable-vaapi',
                                 '--disable-crystalhd', '--disable-mediacodec', '--disable-nvenc', '--disable-mmal',
