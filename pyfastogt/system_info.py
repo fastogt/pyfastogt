@@ -86,7 +86,7 @@ def linux_get_dist():
 
     if dist_name_upper.startswith(("RHEL", "CENTOS LINUX", "FEDORA", "AMAZON LINUX")):
         return "RHEL"
-    elif dist_name_upper.startswith(("DEBIAN", "UBUNTU", "LINUXMINT", "RASPBIAN GNU/LINUX")):
+    elif dist_name_upper.startswith(("DEBIAN", "UBUNTU", "LINUX MINT", "RASPBIAN GNU/LINUX")):
         return "DEBIAN"
     elif dist_name_upper.startswith(("ARCH")):
         return "ARCH"
