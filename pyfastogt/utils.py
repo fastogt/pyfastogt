@@ -10,7 +10,7 @@ import tarfile
 from urllib.request import urlopen
 
 import certifi
-from validate_email import validate_email
+from email_validator import validate_email, EmailNotValidError
 
 
 class CommonError(Exception):
@@ -21,9 +21,10 @@ class CommonError(Exception):
         return self.value_
 
 
-def is_valid_email(email: str, check_mx: bool) -> bool:
-    dns_valid = validate_email(email, check_mx=check_mx)
-    if not dns_valid:
+def is_valid_email(email: str) -> bool:
+    try:
+        validate_email(email)
+    except EmailNotValidError as e:
         return False
 
     validate_url = 'https://open.kickbox.com/v1/disposable/' + email
