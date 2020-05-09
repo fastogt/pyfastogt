@@ -165,6 +165,10 @@ class BuildRequest(object):
     def prefix_path(self):
         return self.prefix_path_
 
+    def upgrade_pip(self):
+        pip3_upgrade = ['pip3', 'install', '-U', 'pip']
+        subprocess.call(pip3_upgrade)
+
     def build_snappy(self):
         self._clone_and_build_via_cmake(generate_fastogt_github_path('snappy'),
                                         ['-DBUILD_SHARED_LIBS=OFF', '-DSNAPPY_BUILD_TESTS=OFF'])
