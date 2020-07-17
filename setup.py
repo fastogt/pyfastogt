@@ -19,7 +19,7 @@ URL = 'https://github.com/fastogt/pyfastogt'
 EMAIL = 'support@fastogt.com'
 AUTHOR = 'Alexandr Topilski'
 REQUIRES_PYTHON = '>=3.0.0'
-VERSION = '1.0.0'
+VERSION = '1.1.0'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
