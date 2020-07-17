@@ -23,6 +23,7 @@ VERSION = '1.0.0'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
+    'dnspython>=1.15.0, <2.0'
     'email-validator',
     'distro',
     'certifi',
