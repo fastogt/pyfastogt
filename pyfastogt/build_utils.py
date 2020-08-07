@@ -256,7 +256,6 @@ class BuildRequest(object):
 
         ffmpeg_platform_args = ['--enable-static', '--enable-pic', '--disable-doc', '--enable-openssl',
                                 '--disable-avdevice', '--disable-postproc', '--disable-swscale',
-                                '--disable-ffplay', '--disable-ffmpeg',
                                 '--disable-encoder=flac', '--disable-devices', '--disable-dxva2', '--disable-vdpau',
                                 '--disable-filters', '--enable-filter=yadif', '--disable-doc', '--disable-d3d11va',
                                 '--disable-audiotoolbox', '--disable-videotoolbox', '--disable-vaapi',
