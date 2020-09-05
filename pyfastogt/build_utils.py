@@ -211,9 +211,9 @@ class BuildRequest(object):
 
         self._clone_and_build_via_cmake(generate_fastogt_github_path('common'), cmake_flags)
 
-    def build_fastotv_protocol(self):
+    def build_fastotv_cpp(self):
         cmake_flags = []
-        self._clone_and_build_via_cmake(generate_fastogt_github_path('fastotv_protocol'), cmake_flags)
+        self._clone_and_build_via_cmake(generate_fastogt_github_path('fastotv_cpp'), cmake_flags)
 
     def build_fastoplayer(self):
         cmake_flags = []
