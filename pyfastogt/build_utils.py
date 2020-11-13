@@ -278,7 +278,7 @@ class BuildRequest(object):
         compiler_flags = ffmpeg_specific_compile_flags
         compiler_flags.extend(ffmpeg_platform_args)
         self._clone_and_build_via_configure(generate_fastogt_github_path('ffmpeg'), compiler_flags,
-                                            use_platform_flags=False)
+                                            use_platform_flags=False, branch='n4.3.1')
 
     # install packages
     def _install_package(self, name: str):
