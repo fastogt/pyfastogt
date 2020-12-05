@@ -180,27 +180,6 @@ class BuildRequest(object):
         libev_compiler_flags = ['--with-pic', '--disable-shared', '--enable-static']
         self._clone_and_build_via_autogen(generate_fastogt_github_path('libev'), libev_compiler_flags)
 
-    def build_cpuid(self):
-        cpuid_compiler_flags = ['--disable-shared', '--enable-static']
-
-        pwd = os.getcwd()
-        cloned_dir = utils.git_clone(generate_fastogt_github_path('libcpuid'))
-        os.chdir(cloned_dir)
-
-        platform_name = self.platform_name()
-        if platform_name == 'macosx':
-            libtoolize_cpuid = ['glibtoolize']
-        else:
-            libtoolize_cpuid = ['libtoolize']
-        subprocess.call(libtoolize_cpuid)
-
-        autoreconf_cpuid = ['autoreconf', '--install']
-        subprocess.call(autoreconf_cpuid)
-
-        self._build_via_configure(cpuid_compiler_flags)
-
-        os.chdir(pwd)
-
     def update_pyfastogt(self):
         self._clone_and_build_via_python3(generate_fastogt_github_path('pyfastogt'))
 
