@@ -10,7 +10,6 @@ import sys
 from shutil import rmtree
 
 from setuptools import find_packages, setup, Command
-from setuptools.command.install import install
 
 # Package meta-data.
 NAME = 'pyfastogt'
@@ -19,7 +18,7 @@ URL = 'https://github.com/fastogt/pyfastogt'
 EMAIL = 'support@fastogt.com'
 AUTHOR = 'Alexandr Topilski'
 REQUIRES_PYTHON = '>=3.0.0'
-VERSION = '1.1.0'
+VERSION = '1.2.0'
 
 # What packages are required for this module to be executed?
 REQUIRED = [
