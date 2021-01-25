@@ -183,6 +183,9 @@ class BuildRequest(object):
     def update_pyfastogt(self):
         self._clone_and_build_via_python3(generate_fastogt_github_path('pyfastogt'))
 
+    def update_pyfastostream(self):
+        self._clone_and_build_via_python3(generate_fastogt_github_path('pyfastostream'))
+
     def build_common(self, with_qt=False):
         cmake_flags = []
         if with_qt:
